@@ -9,7 +9,7 @@ let logout = document.getElementById("signout");
 // once the page has fully loaded a call is made to the server with the username variable
 // to check if the student has signed in
 window.onload = () => {
-  axios.post('http://localhost:3000/login_get', {username:username})
+  axios.post('/login_get', {username:username})
     .then(response => {
       console.log(response.data);
       if (response.data === false){
@@ -24,7 +24,7 @@ if (logout !== null) {
   logout.onclick = function () {
     console.log("logging out");
 
-    axios.post("http://localhost:3000/logout", {username:username})
+    axios.post("/logout", {username:username})
       .catch(error => {
         console.error('Error:', error);
       });
@@ -36,7 +36,7 @@ if (logout !== null) {
 // and the id number for the patient the student selected. this one has been modified to send multiple values
 //                                                                                         type           amount
 function sendTwoValues(tableName, value1, value2, colName1, colName2) {
-  axios.post('http://localhost:3000/twoValues', {tableName: tableName, username: username,  val1: value1, val2: value2,
+  axios.post('/twoValues', {tableName: tableName, username: username,  val1: value1, val2: value2,
     patientId: patientval, colName1: colName1, colName2: colName2})
     .then(response => {
       console.log('Response:', response.data);

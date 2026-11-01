@@ -17,7 +17,7 @@ let submit = document.getElementById("submit");
 // once the page has fully loaded a call is made to the server with the username variable
 // to check if the student has signed in
 window.onload = () => {
-  axios.post('http://localhost:3000/login_get', {username:username})
+  axios.post('/login_get', {username:username})
     .then(response => {
       console.log(response.data);
       if (response.data === false){
@@ -32,7 +32,7 @@ if (logout !== null) {
   logout.onclick = function () {
     console.log("logging out");
 
-    axios.post("http://localhost:3000/logout", {username:username})
+    axios.post("/logout", {username:username})
       .catch(error => {
         console.error('Error:', error);
       });
@@ -43,7 +43,7 @@ if (logout !== null) {
 // function allows sending the numerical values assigned to each input to the server using the name of the destination table, current students username
 // and the id number for the patient the student selected
 function sendData(tableName, value, patientNum) {
-  axios.post('http://localhost:3000/submit', {tableName: tableName, username: username,  value: value, patientId: patientval})
+  axios.post('/submit', {tableName: tableName, username: username,  value: value, patientId: patientval})
     .then(response => {
       console.log('Response:', response.data);
     })

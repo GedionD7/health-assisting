@@ -69,7 +69,7 @@ await getPatients();
 // once the page has fully loaded a call is made to the server with the username variable
 // to check if the student has signed in
 window.onload = () => {
-  axios.post('http://localhost:3000/login_get', {username:username})
+  axios.post('/login_get', {username:username})
     .then(response => {
       console.log(response.data);
       if (response.data === false){
@@ -106,7 +106,7 @@ submit.onclick = async function () {
     //allData[u] = [];
     for (let t = 0; t < tableNames.length; t++) {
       console.log( "inner loop:" + t);
-      await axios.post("http://localhost:3000/teacher", {date1: d1, date2: d2, username: usernames[u], tableName: tableNames[t]})
+      await axios.post("/teacher", {date1: d1, date2: d2, username: usernames[u], tableName: tableNames[t]})
         .then(res => {
           // console.log("data " + usernames[u] + ' ' + tableNames[t]);
           // console.log(res.data);
@@ -131,7 +131,7 @@ if (logout !== null) {
   logout.onclick = function () {
     console.log("logging out");
 
-    axios.post("http://localhost:3000/logout", {username:username})
+    axios.post("/logout", {username:username})
       .catch(error => {
         console.error('Error:', error);
       });
@@ -143,7 +143,7 @@ async function sortStudents() {
   let uNames = [];
   let sNames = [];
 
-  await axios.post("http://localhost:3000/getStudents").then((res) => {
+  await axios.post("/getStudents").then((res) => {
     // console.log("Students:");
     // console.log(res.data);
 
@@ -194,7 +194,7 @@ function calcRowspans(usernames, categoryRowspans) {
 
 async function getPatients() {
   //gets all the names of the patients from the server
-  await axios.get("http://localhost:3000/getPatients")
+  await axios.get("/getPatients")
     .then(response => {
       let res = response.data;
       for (let i = 0; i < res.length; i++) {

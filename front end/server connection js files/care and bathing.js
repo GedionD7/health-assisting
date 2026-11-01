@@ -10,7 +10,7 @@ let submit = document.getElementById("submit");
 // once the page has fully loaded a call is made to the server with the username variable
 // to check if the student has signed in
 window.onload = () => {
-  axios.post('http://localhost:3000/login_get', {username:username})
+  axios.post('/login_get', {username:username})
     .then(response => {
       console.log(response.data);
       if (response.data === false){
@@ -23,7 +23,7 @@ window.onload = () => {
 // function allows sending the numerical values assigned to each input to the server using the name of the destination table, current students username
 // and the id number for the patient the student selected
 function sendData(tableName, value) {
-  axios.post('http://localhost:3000/submit', {tableName: tableName, username: username,  value: value, patientId: patientval})
+  axios.post('/submit', {tableName: tableName, username: username,  value: value, patientId: patientval})
     .then(response => {
       console.log('Response:', response.data);
     })
@@ -37,7 +37,7 @@ function sendData(tableName, value) {
 // and the id number for the patient the student selected. this one has been modified to send multiple values
 //                                                                                          bathing       assist
 function sendTwoValues(tableName, value1, value2, colName1, colName2) {
-  axios.post('http://localhost:3000/twoValues', {tableName: tableName, username: username,  val1: value1, val2: value2,
+  axios.post('/twoValues', {tableName: tableName, username: username,  val1: value1, val2: value2,
     patientId: patientval, colName1: colName1, colName2: colName2})
     .then(response => {
       console.log('Response:', response.data);
@@ -53,7 +53,7 @@ if (logout !== null) {
   logout.onclick = function () {
     console.log("logging out");
 
-    axios.post("http://localhost:3000/logout", {username:username})
+    axios.post("/logout", {username:username})
       .catch(error => {
         console.error('Error:', error);
       });

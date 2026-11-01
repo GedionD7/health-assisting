@@ -51,7 +51,7 @@ submit.onclick = async function (event) {
 
   try {
     const checkResponse = await axios.post(
-      "http://localhost:3000/check-username",
+      "/check-username",
       { username: usernameValue }
     );
 
@@ -61,7 +61,7 @@ submit.onclick = async function (event) {
     }
 
     const signupResponse = await axios.post(
-      "http://localhost:3000/signup",
+      "/signup",
       {
         username: usernameValue,
         password: passwordValue,

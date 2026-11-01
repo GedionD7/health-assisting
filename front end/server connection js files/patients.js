@@ -7,7 +7,7 @@ let logout = document.getElementById("signout");
 // once the page has fully loaded a call is made to the server with the username variable
 // to check if the student has signed in
 window.onload = () => {
-  axios.post('http://localhost:3000/login_get', {username})
+  axios.post('/login_get', {username})
     .then(response => {
       if (response.data === false){
         console.log("not signed in");
@@ -32,7 +32,7 @@ let pait10 = document.getElementById("pait10");
 
 
 //gets all the names of the patients from the server
-axios.get("http://localhost:3000/getPatients")
+axios.get("/getPatients")
   .then(response => {
     let res = response.data;
     for(let i = 0; i < res.length; i++){
@@ -73,7 +73,7 @@ if (logout !== null) {
   logout.onclick = function () {
     console.log("logging out");
 
-    axios.post("http://localhost:3000/logout", {username:username})
+    axios.post("/logout", {username:username})
       .catch(error => {
         console.error('Error:', error);
       });

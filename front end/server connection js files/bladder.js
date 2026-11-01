@@ -13,7 +13,7 @@ let logout = document.getElementById("signout");
 // to check if the student has signed in
 
 window.onload = () => {
-  axios.post('http://localhost:3000/login_get', {username:username})
+  axios.post('/login_get', {username:username})
     .then(response => {
       console.log(response.data);
       if (response.data === false){
@@ -28,7 +28,7 @@ if (logout !== null) {
   logout.onclick = function () {
     console.log("logging out");
 
-    axios.post("http://localhost:3000/logout", {username:username})
+    axios.post("/logout", {username:username})
       .catch(error => {
         console.error('Error:', error);
       });
@@ -40,7 +40,7 @@ if (logout !== null) {
 // and the id number for the patient the student selected
 
 function sendData(tableName, value, patientNum) {
-  axios.post('http://localhost:3000/submit', {tableName: tableName, username: username,  value: value, patientId: patientNum})
+  axios.post('/submit', {tableName: tableName, username: username,  value: value, patientId: patientNum})
     .then(response => {
       console.log('Response:', response.data);
     })
