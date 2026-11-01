@@ -1,24 +1,15 @@
 {
-  "name": "untitled1",
+  "name": "health-assisting",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node server.mjs"
   },
-  "private": true,
   "dependencies": {
-    "axios": "^1.7.9",
-    "bcrypt": "^6.0.0",
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "http": "^0.0.1-security",
-    "mariadb": "^3.4.0",
-    "mysql2": "^3.11.4"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "type": "commonjs"
+    "bcrypt": "*",
+    "cors": "*",
+    "express": "*",
+    "mariadb": "*",
+    "pg": "^8.23.1"
+  }
 }
