@@ -4,14 +4,22 @@ import mariadb from "mariadb/callback.js";
 import bcrypt from "bcrypt";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "front end")));
+
 app.get("/", (req, res) => {
-    res.send("Welcome to my server!");
+    res.sendFile(path.join(__dirname, "front end", "index.html"));
 });
 
 const db_info = {
