@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vital Signs</title>
+  <link rel="stylesheet" href="css/Vital.css">
+<link rel="stylesheet" href="css/app-redesign.css">
+</head>
+<body>
+  <header>
+    <h1 class="h1">Vital Signs</h1>
+    <p class="p1"> General record of vital signs. </p>
+    <p class="p2"> Please input your measures and click submit once completed. </p>
+  </header>
+<hr >
+
+<div>
+  <form action="/submit" method="post">
+    <table id="VitalTable">
+      <thead>
+      <tr>
+        <th>Weight</th>
+        <th>Blood Pressure</th>
+        <th>Oxygen levels</th>
+        <th>P</th>
+        <th>R</th>
+        <th>T</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><label for="weight"></label><input id="weight" type="text" class ="weight" placeholder="Enter weight(lb)" required></td>
+        <td><label for="bp"></label><input id="bp" type="text" placeholder="Enter BP" required></td>
+        <td><label for="O2levels"></label><input id="O2levels" type="text" placeholder="Enter O2 Levels" required></td>
+        <td><label for="pulse"></label><input id="pulse" type="text" placeholder="Enter P" required></td>
+        <td><label for="respratory"></label><input id="respratory" type="text" placeholder="Enter R" required></td>
+        <td><label for="temp"></label><input id="temp" type="text" placeholder="Enter T" required></td>
+
+      </tr>
+      </tbody>
+    </table>
+    <button class="submit" type="button" id="submit">Submit</button>
+  </form>
+</div>
+
+
+
+<p class="back" ><a href="ADL.html"><img src="img/arrow.png" alt="Back" width="50px" height="50px"></a></p>
+  <p><a  id="signout" class="button signout" href="#" >Sign out</a></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<script src="server connection js files/vitals.js" type="module"></script>
+<script defer nomodule src="classic-vitals-bundle.js"></script>
+</body>
+</html>

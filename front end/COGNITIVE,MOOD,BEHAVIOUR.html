@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/mood.css" />
+  <meta charset="UTF-8">
+  <title>MOOD AND BEHAVIOR</title>
+<link rel="stylesheet" href="css/app-redesign.css">
+</head>
+<body>
+  <header>
+    <h1>Cognitive/Mood/Behavior</h1>
+    <p class="p1"> How the patient behaves with and presents their mood. </p>
+  </header>
+<hr>
+
+  <div class="sundown" >
+    <table>
+      <tr>
+        <th colspan="2"><p class="p2">Is the patient sundowning?</p></th>
+      </tr>
+      <tr>
+        <td><button type="button" class="button yessd" id="ys"><a href="" ></a> Yes</button></td>
+        <td><button type="button" class="button no" id="ns"> No</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <hr>
+  <p class="p2">Please select the emotions the patient is experiencing.</p>
+  <hr>
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;" class="buttons">
+    <table>
+     <tr>
+    <td><button type="button" class=" button button1" id="calm"> Calm </button></td>
+    <td><button type="button" class=" button button2" id="happy">Happy</button></td>
+    <td><button type="button" class=" button button3" id="depressed">Depressed</button></td>
+  </tr>
+  <tr>
+    <td><button type="button" class=" button button4" id="agitation">Agitation</button> </td>
+    <td><button type="button" class=" button button5" id="sad">Sad</button></td>
+    <td><button type="button" class=" button button6" id="yelling">Yelling</button></td>
+  </tr>
+  <tr>
+    <td><button type="button" class=" button button7" id="anxiety">Anxiety</button> </td>
+    <td><button type="button" class=" button 8" id="withdrawn">Withdrawn</button></td>
+    <td><button
+      type="button"  class=" button button9" id="combatitive" >Combative</button></td>
+  </tr>
+</table>
+</div>
+
+<div>
+
+
+
+  <p class="back mood"><a href="ADL.html"><img src="img/arrow.png" alt="Back" width="50px" height="50px"></a></p>
+  <p><a  id="signout" class="button signout" href="#" >Sign out</a></p>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<script src="server connection js files/mood.js" type="module"></script>
+<script defer nomodule src="classic-mood-bundle.js"></script>
+</body>
+</html>

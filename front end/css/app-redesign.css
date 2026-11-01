@@ -1,0 +1,580 @@
+/* =========================================
+   HEALTH ASSISTING — APP REDESIGN
+   ========================================= */
+
+:root {
+  --primary: #173044;
+  --primary-light: #244b63;
+  --accent: #2b7a78;
+  --accent-light: #e7f4f2;
+  --background: #f4f7fa;
+  --surface: #ffffff;
+  --text: #263746;
+  --muted: #687887;
+  --line: #dce4eb;
+  --danger: #c0392b;
+  --success: #218c5a;
+  --shadow: 0 8px 28px rgba(23, 48, 68, 0.09);
+  --radius: 16px;
+}
+
+/* =========================================
+   GLOBAL STYLES
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Manrope", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--accent);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =========================================
+   PAGE HEADER AND TITLES
+   ========================================= */
+
+body > header {
+  width: 100%;
+  padding: 24px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+body > header .createhead,
+.createhead {
+  width: 100%;
+  margin: 0 auto;
+  color: var(--primary);
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--primary);
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+main {
+  width: min(1150px, calc(100% - 36px));
+  margin: 28px auto;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+.container,
+#container {
+  width: min(1150px, calc(100% - 36px));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* =========================================
+   LOGIN PAGE
+   ========================================= */
+
+body:has(.login-box) {
+  background: var(--background);
+}
+
+body > form:has(.login-box) {
+  display: block;
+  width: min(480px, calc(100% - 36px));
+  max-width: 480px;
+  margin: 32px auto;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+body > form:has(.login-box) > .login-box {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 480px;
+  margin: 24px auto;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.login-box h1,
+.login-box h2,
+.login-box h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.login-box p {
+  color: var(--muted);
+}
+
+.login-box label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.login-box input,
+.login-box select,
+.login-box textarea {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.login-box button,
+.login-box input[type="submit"] {
+  width: 100%;
+}
+
+/* =========================================
+   FORMS AND INPUTS
+   ========================================= */
+
+form {
+  color: var(--text);
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+  padding: 12px 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid #cbd6df;
+  border-radius: 9px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(43, 122, 120, 0.13);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+input[type="submit"],
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  color: #ffffff;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 9px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  color: var(--primary);
+  background: #ffffff;
+  border-color: var(--line);
+}
+
+.btn-secondary:hover {
+  color: #ffffff;
+  background: var(--primary-light);
+}
+
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-accent:hover {
+  background: #236664;
+  border-color: #236664;
+}
+
+/* =========================================
+   CARDS AND PANELS
+   ========================================= */
+
+.card,
+.panel {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card h2:first-child,
+.card h3:first-child,
+.panel h2:first-child,
+.panel h3:first-child {
+  margin-top: 0;
+}
+
+/* =========================================
+   DASHBOARD
+   ========================================= */
+
+.dashboard,
+.dashboard-container {
+  width: min(1150px, calc(100% - 36px));
+  margin: 28px auto;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.dashboard-card h2,
+.dashboard-card h3 {
+  margin-top: 0;
+}
+
+.dashboard-card p {
+  color: var(--muted);
+}
+
+.dashboard-card a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dashboard-card a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+nav a {
+  padding: 8px 14px;
+  color: var(--primary);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: var(--accent-light);
+}
+
+/* =========================================
+   TABLES
+   ========================================= */
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: #ffffff;
+  background: var(--primary);
+  font-weight: 700;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #f7fafc;
+}
+
+/* =========================================
+   STATUS MESSAGES
+   ========================================= */
+
+.success,
+.success-message {
+  padding: 12px 16px;
+  color: #176943;
+  background: #e8f7ef;
+  border: 1px solid #b9e5cd;
+  border-radius: 9px;
+}
+
+.error,
+.error-message {
+  padding: 12px 16px;
+  color: #922b21;
+  background: #fcecea;
+  border: 1px solid #f2c4bf;
+  border-radius: 9px;
+}
+
+.warning,
+.warning-message {
+  padding: 12px 16px;
+  color: #805b10;
+  background: #fff6df;
+  border: 1px solid #f0dfa8;
+  border-radius: 9px;
+}
+
+/* =========================================
+   SIGN OUT
+   ========================================= */
+
+.signout,
+.signoutstyle {
+  display: flex;
+  width: max-content;
+  max-width: calc(100% - 36px);
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.signout a,
+.signoutstyle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================
+   ARROWS AND ICONS
+   ========================================= */
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px;
+}
+
+/* =========================================
+   LEGACY FORM STYLES
+   ========================================= */
+
+body > form:not(:has(.login-box)) {
+  width: min(900px, calc(100% - 36px));
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+body > form:not(:has(.login-box)) input,
+body > form:not(:has(.login-box)) select,
+body > form:not(:has(.login-box)) textarea {
+  max-width: 100%;
+}
+
+body > form:not(:has(.login-box)) input:not([type="checkbox"]):not([type="radio"]),
+body > form:not(:has(.login-box)) select,
+body > form:not(:has(.login-box)) textarea {
+  width: 100%;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+  padding: 24px 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main,
+  .dashboard,
+  .dashboard-container {
+    width: calc(100% - 28px);
+  }
+}
+
+@media (max-width: 600px) {
+  body > header {
+    padding: 20px 14px;
+  }
+
+  body > header .createhead,
+  .createhead {
+    font-size: 1.8rem;
+  }
+
+  body > form:has(.login-box) {
+    width: calc(100% - 28px);
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .login-box {
+    padding: 20px;
+  }
+
+  body > form:not(:has(.login-box)) {
+    width: calc(100% - 28px);
+    margin: 20px auto;
+    padding: 18px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .panel,
+  .dashboard-card {
+    padding: 18px;
+
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  nav {
+    gap: 6px;
+    padding: 12px;
+  }
+
+  nav a {
+    padding: 8px 10px;
+  }
+}

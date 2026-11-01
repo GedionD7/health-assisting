@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toileting</title>
+  <link rel="stylesheet" href="css/Toileting.css" />
+<link rel="stylesheet" href="css/app-redesign.css">
+</head>
+<body>
+  <header>
+    <h1> Toileting</h1>
+    <p class="p1"> How the resident uses the toilet/commode/bedpan/urinal.</p>
+  </header>
+
+<hr>
+<div id="container">
+  <form action="/submit" method="post">
+<div class="section 1">
+  <p class="p2"> ‎  Self performance ‎ </p>
+
+  <p> <button type="button" class="button totdep" id="dependent"> 4. Totally Dependant </button></p>
+  <p> <button type="button" class="button toiass" id="extAssist"> 3. Extensive Assist</button></p>
+  <p> <button type="button" class="button toillim" id="limAssist"> 2. Limited Assist </button></p>
+  <p> <button type="button" class="button toilsup" id="supervision"> 1. Supervision </button></p>
+  <p> <button type="button" class="button toiind" id="independent"> 0. Independent </button></p>
+  <p> <button type="button" class="button toididnt" id="none"> 8. Did Not Occur </button></p>
+</div>
+
+<div class="section">
+  <p class="p3"> ‎  Support provided ‎ </p>
+  <p> <button type="button" class="button toicolo"  id="colostomy"> 4. Colostomy Bag </button></p>
+  <p> <button type="button" class="button toitwo" id="twoPerson"> 3.Two Person Assist </button></p>
+  <p> <button type="button" class="button toione" id="onePerson"> 2. One Person Assist </button></p>
+  <p> <button type="button" class="button toiset" id="setup"> 1. Set-up </button></p>
+  <p> <button type="button" class="button toinose" id="noSetup"> 0. No set-up </button></p>
+  <p> <button type="button" class="button toino" id="no"> 8. Did Not Occur </button></p>
+</div>
+
+
+  </form>
+
+  <p class ="p4"> Please select the consistency of the patient's bowel movement.</p>
+  <div class="section2 ">
+
+    <table>
+      <tr>
+        <td><button type="button" class="button liq" id="1poo">Liquid</button></td>
+        <td><button type="button" class="button sof" id="2poo">Soft</button></td>
+        <td><button type="button" class="button formed" id="3poo">Formed</button></td>
+        <td><button type="button" class="button constipated" id="4poo">Constipated etc</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="p4"><em>Did the patient use a catheter?</em></div>
+  <div class="section2">
+  <table>
+    <tr>
+      <td><button type="button" class="button yes" id="cy">Yes</button></td>
+      <td><button type="button" class="button no" id="cn">No</button></td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<p class="back back4"> <a href="ADL.html"> <img src="img/arrow.png" alt="Back" width="50px" height="50px"></a></p>
+<div >
+  <hr>
+  <hr>
+  <p><a id="signout"  class="section3" href="#" >Sign out</a></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<script src="server connection js files/toileting.js" type="module"></script>
+<script defer nomodule src="classic-toileting-bundle.js"></script>
+</body>
+</html>
