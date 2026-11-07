@@ -1,82 +1,96 @@
-//imports the id number associated with the patient the student has selected variable created on patients page
-// as well as importing username variable created on sign in page
-let username = sessionStorage.getItem("username");
 
-let logout = document.getElementById("signout");
+const patientList = document.getElementById("patientList");
+const logoutButton = document.getElementById("signout");
 
-// once the page has fully loaded a call is made to the server with the username variable
-// to check if the student has signed in
-window.onload = () => {
-  axios.post('/login_get', {username})
-    .then(response => {
-      if (response.data === false){
-        console.log("not signed in");
-        window.location.href = "../index.html";
-      }
-    });
-}
+const username = sessionStorage.getItem("username");
 
-let patientNames = [];
-let patientIDs = [];
+// Load actual patient records from PostgreSQL.
+async function loadPatients() {
+  patientList.innerHTML =
+    '<p class="empty-state">Loading patients...</p>';
 
-let pait1 = document.getElementById("pait1");
-let pait2 = document.getElementById("pait2");
-let pait3 = document.getElementById("pait3");
-let pait4 = document.getElementById("pait4");
-let pait5 = document.getElementById("pait5");
-let pait6 = document.getElementById("pait6");
-let pait7 = document.getElementById("pait7");
-let pait8 = document.getElementById("pait8");
-let pait9 = document.getElementById("pait9");
-let pait10 = document.getElementById("pait10");
+  try {
+    const response = await axios.get("/getPatients");
+    const patients = response.data;
 
+    patientList.innerHTML = "";
 
-//gets all the names of the patients from the server
-axios.get("/getPatients")
-  .then(response => {
-    let res = response.data;
-    for(let i = 0; i < res.length; i++){
-      patientNames.push(res[i]["first_name"] + " " + res[i]["last_name"]);
-      patientIDs.push(res[i]["patient_id"]);
+    if (!Array.isArray(patients) || patients.length === 0) {
+      patientList.innerHTML = `
+        <div class="empty-state">
+          <h2>No patients found</h2>
+          <p>
+            There are currently no patient records in the database.
+            Ask your administrator to add patients.
+          </p>
+        </div>
+      `;
+      return;
     }
 
-//   sets the button text to the names in the array
-    pait1.innerText = patientNames[0];
-    pait2.innerText = patientNames[1];
-    pait3.innerText = patientNames[2];
-    pait4.innerText = patientNames[3];
-    pait5.innerText = patientNames[4];
-    pait6.innerText = patientNames[5];
-    pait7.innerText = patientNames[6];
-    pait8.innerText = patientNames[7];
-    pait9.innerText = patientNames[8];
-    pait10.innerText = patientNames[9];
+    patients.forEach((patient) => {
+      if (
+        patient.patient_id == null ||
+        !patient.first_name ||
+        !patient.last_name
+      ) {
+        return;
+      }
 
+      const link = document.createElement("a");
 
+      link.className = "patient-card";
+      link.href = "ADL.html";
+      link.textContent =
+        `${patient.first_name} ${patient.last_name}`;
 
-//  sets a session storage vale for the selected patient
-    pait1.onclick = function(){sessionStorage.setItem("patientval", patientIDs[0])};
-    pait2.onclick = function(){sessionStorage.setItem("patientval", patientIDs[1])};
-    pait3.onclick = function(){sessionStorage.setItem("patientval", patientIDs[2])};
-    pait4.onclick = function(){sessionStorage.setItem("patientval", patientIDs[3])};
-    pait5.onclick = function(){sessionStorage.setItem("patientval", patientIDs[4])};
-    pait6.onclick = function(){sessionStorage.setItem("patientval", patientIDs[5])};
-    pait7.onclick = function(){sessionStorage.setItem("patientval", patientIDs[6])};
-    pait8.onclick = function(){sessionStorage.setItem("patientval", patientIDs[7])};
-    pait9.onclick = function(){sessionStorage.setItem("patientval", patientIDs[8])};
-    pait10.onclick = function(){sessionStorage.setItem("patientval", patientIDs[9])};
-
-  })
-
-// marks the student as logged out in the server and reroutes them to the sign in page
-if (logout !== null) {
-  logout.onclick = function () {
-    console.log("logging out");
-
-    axios.post("/logout", {username:username})
-      .catch(error => {
-        console.error('Error:', error);
+      link.addEventListener("click", () => {
+        sessionStorage.setItem(
+          "patientval",
+          String(patient.patient_id)
+        );
       });
-    window.location.href = "../index.html";
-  };
+
+      patientList.appendChild(link);
+    });
+
+    if (patientList.children.length === 0) {
+      patientList.innerHTML = `
+        <div class="empty-state">
+          <h2>No valid patient records</h2>
+          <p>Please check the patient records in the database.</p>
+        </div>
+      `;
+    }
+  } catch (error) {
+    console.error("Could not load patients:", error);
+
+    patientList.innerHTML = `
+      <div class="empty-state error-message">
+        <h2>Unable to load patients</h2>
+        <p>Please refresh the page or contact your administrator.</p>
+      </div>
+    `;
+  }
 }
+
+// Sign out.
+if (logoutButton) {
+  logoutButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    try {
+      if (username) {
+        await axios.post("/logout", { username });
+      }
+    } catch (error) {
+      console.error("Sign-out request failed:", error);
+    } finally {
+      sessionStorage.removeItem("username");
+      sessionStorage.removeItem("patientval");
+      window.location.href = "../index.html";
+    }
+  });
+}
+
+loadPatients();
